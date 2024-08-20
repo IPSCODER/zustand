@@ -1,10 +1,20 @@
 // Counter.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import useStore from './store';
+import { useFetchStore } from './store';
 
 function App() {
   
   const { count, increase, decrease, reset } = useStore();
+
+  const { todos, asyncFetch } = useFetchStore();
+
+  useEffect(() => {
+    asyncFetch(); // Fetch data when the component mounts
+  }, []);
+  console.log(todos);
+  
+  
   
   return (
     <div>
